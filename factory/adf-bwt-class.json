@@ -1,0 +1,9 @@
+{
+	"name": "adf-bwt-class",
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "2bb5bfbe-c697-43a9-baf6-840ebc7d1ffb",
+		"tenantId": "fca006af-f0c4-4a76-a9c3-cfd29b6fd6e1"
+	}
+}

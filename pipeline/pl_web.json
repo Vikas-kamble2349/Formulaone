@@ -1,0 +1,35 @@
+{
+	"name": "pl_web",
+	"properties": {
+		"activities": [
+			{
+				"name": "act_web",
+				"type": "WebActivity",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"method": "GET",
+					"url": "http://api.zippopotam.us/us/33162"
+				}
+			}
+		],
+		"variables": {
+			"test": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "session2"
+		},
+		"annotations": [],
+		"lastPublishTime": "2024-04-10T10:01:03Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

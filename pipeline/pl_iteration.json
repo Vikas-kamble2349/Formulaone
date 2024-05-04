@@ -1,0 +1,117 @@
+{
+	"name": "pl_iteration",
+	"properties": {
+		"activities": [
+			{
+				"name": "pl_foreach_act_iter",
+				"type": "ForEach",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@pipeline().parameters.lst",
+						"type": "Expression"
+					},
+					"activities": [
+						{
+							"name": "act_append_var",
+							"type": "AppendVariable",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "new_lst",
+								"value": {
+									"value": "@item()",
+									"type": "Expression"
+								}
+							}
+						},
+						{
+							"name": "act_if_cond_check_value",
+							"type": "IfCondition",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"expression": {
+									"value": "@equals(item(), '3')",
+									"type": "Expression"
+								},
+								"ifFalseActivities": [
+									{
+										"name": "act_append_var_copy1",
+										"type": "AppendVariable",
+										"dependsOn": [],
+										"userProperties": [],
+										"typeProperties": {
+											"variableName": "new_lst",
+											"value": {
+												"value": "@item()",
+												"type": "Expression"
+											}
+										}
+									}
+								]
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "act_set_array_display",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "pl_foreach_act_iter",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "new_array_test",
+					"value": {
+						"value": "@variables('new_lst')",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"parameters": {
+			"lst": {
+				"type": "array",
+				"defaultValue": [
+					1,
+					2,
+					3,
+					4,
+					5
+				]
+			},
+			"check variable": {
+				"type": "string"
+			}
+		},
+		"variables": {
+			"new_lst": {
+				"type": "Array"
+			},
+			"new_array_test": {
+				"type": "Array"
+			},
+			"session_nm_var": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "session1"
+		},
+		"annotations": [],
+		"lastPublishTime": "2024-04-09T06:33:45Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

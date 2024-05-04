@@ -1,0 +1,91 @@
+{
+	"name": "pl_explore_varaible_iteration_cond",
+	"properties": {
+		"activities": [
+			{
+				"name": "act_set_var_session",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "session_nm",
+					"value": "BWT adf session"
+				}
+			},
+			{
+				"name": "act_set_var_session_id",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "sesssion_id",
+					"value": "1"
+				}
+			},
+			{
+				"name": "act_set_var_concat_session",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "act_set_var_session",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "act_set_var_session_id",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "session_detail",
+					"value": {
+						"value": "@concat(variables('sesssion_id'),' ',variables('session_nm'))",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"variables": {
+			"session_nm": {
+				"type": "String"
+			},
+			"sesssion_id": {
+				"type": "String"
+			},
+			"session_detail": {
+				"type": "String"
+			},
+			"new_lst": {
+				"type": "Array"
+			},
+			"new_array_test": {
+				"type": "Array"
+			},
+			"session_nm_var": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "session1"
+		},
+		"annotations": [],
+		"lastPublishTime": "2024-04-09T06:33:45Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

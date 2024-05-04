@@ -1,0 +1,20 @@
+{
+	"name": "HttpServer1",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"parameters": {
+			"base_url": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "HttpServer",
+		"typeProperties": {
+			"url": "@{linkedService().base_url}",
+			"enableServerCertificateValidation": true,
+			"authenticationType": "Basic",
+			"userName": "vikas",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQERFQUQ4RTFELTM0NkQtNEYwQi1CQzdFLTMwMTA3QTE2MDcwRF8xMzAwYmFiNS04ZDY0LTRjMjEtOGM4MS04M2NmMGMxOGQ3NjEiDQp9"
+		}
+	}
+}
